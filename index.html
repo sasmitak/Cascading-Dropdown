@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascading Dropdown</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+    
+    </style>
+    <script>
+        var movies = ["Select Movie", "Pathaan (U/A)", "The Whale (A)", "Fast X (U/A)", "Avatar The Way Of Water (U/A)"];
+
+        var pathaan = ["Select Cinema", "INOX Raghuleela Mega Mall,Kandivali(W)", "INOX Thakur Mall,Dahisar(E)", "INOX Laserplex,CR2,Nariman Point", "METRO INOX Cinemas,Marine Lines"];
+        var thewhale = ["Select Cinema", "INOX Raghuleela Mega Mall,Kandivali(W)", "INOX Thakur Mall,Dahisar(E)", "INOX Laserplex,CR2,Nariman Point", "METRO INOX Cinemas,Marine Lines"];
+        var fastx = ["Select Cinema", "INOX Raghuleela Mega Mall,Kandivali(W)", "INOX Thakur Mall,Dahisar(E)", "INOX Laserplex,CR2,Nariman Point", "METRO INOX Cinemas,Marine Lines"];
+        var avatar = ["Select Cinema", "INOX Raghuleela Mega Mall,Kandivali(W)", "INOX Thakur Mall,Dahisar(E)", "INOX Laserplex,CR2,Nariman Point", "METRO INOX Cinemas,Marine Lines"];
+
+        var inoxraghu = ["Select Dates", "TODAY 7th March", "TOMORROW 8th March", "THURSDAY 9th March", "FRIDAY 10th March"];
+        var inoxthakur = ["Select Dates", "TODAY 7th March", "TOMORROW 8th March", "THURSDAY 9th March", "FRIDAY 10th March"];
+        var inoxlaser = ["Select Dates", "TODAY 7th March", "TOMORROW 8th March", "THURSDAY 9th March", "FRIDAY 10th March"];
+        var inoxmetro = ["Select Dates", "TODAY 7th March", "TOMORROW 8th March", "THURSDAY 9th March", "FRIDAY 10th March"];
+
+        var sevenmar = ["Select Timing", "12:50 PM Hindi [3D]", "7;00 PM English [ONYX Diner]"];
+        var eightmar = ["Select Timing", "12:50 PM Hindi [3D]", "7;00 PM English [ONYX Diner]"];
+        var ninemar = ["Select Timing", "12:50 PM Hindi [3D]", "7;00 PM English [ONYX Diner]"];
+        var tenmar = ["Select Timing", "12:50 PM Hindi [3D]", "7;00 PM English [ONYX Diner]"];
+
+        var cinemas = [];
+        var dates = [];
+        var times = [];
+
+        var seats = ["Select Seats", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+        function LoadMovies() {
+            for (var movie of movies) {
+                var option = document.createElement("option");
+                option.text = movie;
+                option.value = movie;
+                document.getElementById("lstMovies").appendChild(option);
+            }
+        }
+        function MovieChanged() {
+            var MovieName = document.getElementById("lstMovies").value;
+            switch (MovieName) {
+                case "Pathaan (U/A)":
+                    cinemas = pathaan;
+                    LoadCinemas();
+                    break;
+                case "The Whale (A)":
+                    cinemas = thewhale;
+                    LoadCinemas();
+                    break;
+                case "Fast X (U/A)":
+                    cinemas = fastx;
+                    LoadCinemas();
+                    break;
+                case "Avatar The Way Of Water (U/A)":
+                    cinemas = avatar;
+                    LoadCinemas();
+                    break;
+                default:
+                    cinemas = ["Please select a Movie"];
+                    LoadCinemas();
+                    break;
+            }
+        }
+        function LoadCinemas() {
+            document.getElementById("lstCinemas").innerHTML = "";
+            for (var cinema of cinemas) {
+                var option = document.createElement("option");
+                option.text = cinema;
+                option.value = cinema;
+                document.getElementById("lstCinemas").appendChild(option);
+            }
+        }
+        function CinemaChanged() {
+            var cinemaName = document.getElementById("lstCinemas").value;
+            switch (cinemaName) {
+                case "INOX Raghuleela Mega Mall,Kandivali(W)":
+                    dates = inoxraghu;
+                    LoadDates();
+                    break;
+                case "INOX Thakur Mall,Dahisar(E)":
+                    dates = inoxthakur;
+                    LoadDates();
+                    break;
+                case "INOX Laserplex,CR2,Nariman Point":
+                    dates = inoxlaser;
+                    LoadDates();
+                    break;
+                case "METRO INOX Cinemas,Marine Lines":
+                    dates = inoxmetro;
+                    LoadDates();
+                    break;
+                default:
+                    dates = ["Please select a Cinema"];
+                    LoadDates();
+                    break;
+            }
+        }
+        function LoadDates() {
+            document.getElementById("lstDates").innerHTML = "";
+            for (var date of dates) {
+                var option = document.createElement("option");
+                option.text = date;
+                option.value = date;
+                document.getElementById("lstDates").appendChild(option);
+            }
+        }
+        function DateChanged() {
+            var dateName = document.getElementById("lstDates").value;
+            switch (dateName) {
+                case "TODAY 7th March":
+                    times = sevenmar;
+                    LoadTimings();
+                    break;
+                case "TOMORROW 8th March":
+                    times = eightmar;
+                    LoadTimings();
+                    break;
+                case "THURSDAY 9th March":
+                    times = ninemar;
+                    LoadTimings();
+                    break;
+                case "FRIDAY 10th March":
+                    times = tenmar;
+                    LoadTimings();
+                    break;
+
+            }
+        }
+        function LoadTimings() {
+            document.getElementById("lstTimings").innerHTML = "";
+            for (var time of times) {
+                var option = document.createElement("option");
+                option.text = time;
+                option.value = time;
+                document.getElementById("lstTimings").appendChild(option);
+            }
+        }
+        function TimingChanged(){
+
+        }
+        function SeatChanged(){
+            
+        }
+        function LoadSeats() {
+            document.getElementById("lstSeats").innerHTML = "";
+            for (var seat of seats) {
+                var option = document.createElement("option");
+                option.text = seat;
+                option.value = seat;
+                document.getElementById("lstSeats").appendChild(option);
+            }
+        }
+        function bodyload() {
+            LoadMovies();
+            LoadCinemas();
+            LoadDates();
+            LoadTimings();
+            LoadSeats();
+        }
+        function BookClick() {
+            document.getElementById("MovieBook").innerHTML=alert(`You Have selected ${movies}`);
+        }
+
+    </script>
+    <style>
+        select {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body class="container-fluid" onload="bodyload()" style="background-image: url(./public/background.jpg);">
+    <div class="flex-row" style="display: flex;">
+        <div class="p-1 mt-3" style="background-color: black">
+            <select id="lstMovies" onchange="MovieChanged()"></select>
+        </div>
+        <div class="p-1 mt-3" style="background-color: black">
+            <select id="lstCinemas" onchange="CinemaChanged()"></select>
+        </div>
+        <div class="p-1 mt-3" style="background-color: black">
+            <select id="lstDates" onchange="DateChanged()"></select>
+        </div>
+        <div class="p-1 mt-3" style="background-color: black">
+            <select id="lstTimings" onchange="TimingChanged()"></select>
+        </div>
+        <div class="p-1 mt-3" style="background-color: black">
+            <select id="lstSeats" onchange="SeatChanged()"></select>
+        </div>
+        <div class="p-1 mt-3" style="background-color: black;">
+            <button class="btn btn-danger" id="MovieBook" onclick="BookClick()">Book</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
